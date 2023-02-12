@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.Robot.Commands.Basic.GrabCone;
+import org.firstinspires.ftc.teamcode.Robot.Commands.Basic.ReleaseCone;
 import org.firstinspires.ftc.teamcode.Robot.Subsystems.Claw_Subsystem;
 import org.firstinspires.ftc.teamcode.util.Robot;
 
@@ -56,5 +57,8 @@ public class RobotContainer extends Robot {
     private void bindGrabbers() {
         Button LEFT_BUMPER = drivertwo.getGamepadButton(GamepadKeys.Button.LEFT_BUMPER);
         LEFT_BUMPER.whenPressed(new GrabCone(claw_subsystem));
+
+        Button RIGHT_BUMPER = drivertwo.getGamepadButton(GamepadKeys.Button.RIGHT_BUMPER);
+        RIGHT_BUMPER.whenPressed(new ReleaseCone(claw_subsystem));
     }
 }
