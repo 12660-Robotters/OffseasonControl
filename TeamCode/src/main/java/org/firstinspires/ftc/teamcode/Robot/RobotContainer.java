@@ -1,10 +1,13 @@
 package org.firstinspires.ftc.teamcode.Robot;
 
 
+import com.arcrobotics.ftclib.command.button.Button;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
+import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.teamcode.Robot.Commands.Basic.GrabCone;
 import org.firstinspires.ftc.teamcode.Robot.Subsystems.Claw_Subsystem;
 import org.firstinspires.ftc.teamcode.util.Robot;
 
@@ -37,11 +40,21 @@ public class RobotContainer extends Robot {
 
     }
 
-    public void initAuto() {
+    private void initAuto() {
 
     }
 
-    public void initTeleop() {
+    private void initTeleop() {
+        bindGrabbers();
 
+
+
+
+    }
+
+
+    private void bindGrabbers() {
+        Button LEFT_BUMPER = drivertwo.getGamepadButton(GamepadKeys.Button.LEFT_BUMPER);
+        LEFT_BUMPER.whenPressed(new GrabCone(claw_subsystem));
     }
 }
