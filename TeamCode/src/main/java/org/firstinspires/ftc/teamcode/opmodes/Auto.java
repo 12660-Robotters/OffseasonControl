@@ -11,8 +11,13 @@ public class Auto extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         RobotContainer robotContainer = new RobotContainer(hardwareMap, RobotContainer.OpModeType.AUTO, gamepad1, gamepad2);
 
+
+        waitForStart();
+
         while (opModeIsActive() && !isStopRequested()) {
             robotContainer.run();
         }
+
+        robotContainer.reset();
     }
 }

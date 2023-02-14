@@ -10,6 +10,8 @@ public class Teleop extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         RobotContainer robotContainer = new RobotContainer(hardwareMap, org.firstinspires.ftc.teamcode.Robot.RobotContainer.OpModeType.TELEOP, gamepad1, gamepad2);
 
+        waitForStart();
+
         while (opModeIsActive() && !isStopRequested()) {
             robotContainer.run();
         }
