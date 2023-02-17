@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Robot;
 
 
+import com.arcrobotics.ftclib.command.CommandScheduler;
 import com.arcrobotics.ftclib.command.RunCommand;
 import com.arcrobotics.ftclib.command.button.Button;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
@@ -9,9 +10,12 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.Robot.Subsystems.Claw_Subsystem;
+import org.firstinspires.ftc.teamcode.Robot.Subsystems.SlideBasic;
+import org.firstinspires.ftc.teamcode.Robot.commands.SlideBasicRun;
 import org.firstinspires.ftc.teamcode.util.Robot;
 
 public class RobotContainer extends Robot {
+    CommandScheduler commandScheduler;
 
     GamepadEx driverone;
     GamepadEx drivertwo;
@@ -20,9 +24,11 @@ public class RobotContainer extends Robot {
     }
 
     Claw_Subsystem claw_subsystem;
+    SlideBasic slideBasic;
 
     public RobotContainer(HardwareMap hardwareMap, OpModeType type, Gamepad driverone, Gamepad drivertwo) {
         claw_subsystem = new Claw_Subsystem(hardwareMap);
+        commandScheduler = CommandScheduler.getInstance();
 
 
         switch (type) {
@@ -31,6 +37,7 @@ public class RobotContainer extends Robot {
 
             case TELEOP:
 
+                slideBasic = new SlideBasic(hardwareMap);
                 this.driverone = new GamepadEx(driverone);
                 this.drivertwo = new GamepadEx(drivertwo);
                 initTeleop();
@@ -46,6 +53,7 @@ public class RobotContainer extends Robot {
 
     private void initTeleop() {
         bindGrabbers();
+        bindSlideBasic();
 
 
 
@@ -57,5 +65,9 @@ public class RobotContainer extends Robot {
         Button LEFT_BUMPER = drivertwo.getGamepadButton(GamepadKeys.Button.LEFT_BUMPER);
         LEFT_BUMPER.whenPressed(new RunCommand(claw_subsystem::grab, claw_subsystem));
         LEFT_BUMPER.whenReleased(new RunCommand(claw_subsystem::release, claw_subsystem));
+    }
+
+    private void bindSlideBasic() {
+        commandScheduler.setDefaultCommand(slideBasic, new SlideBasicRun(slideBasic, drivertwo));
     }
 }
