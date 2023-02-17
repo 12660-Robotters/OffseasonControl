@@ -28,7 +28,9 @@ public class RobotContainer extends Robot {
 
     public RobotContainer(HardwareMap hardwareMap, OpModeType type, Gamepad driverone, Gamepad drivertwo) {
         claw_subsystem = new Claw_Subsystem(hardwareMap);
+        register(claw_subsystem);
         commandScheduler = CommandScheduler.getInstance();
+
 
 
         switch (type) {
@@ -38,6 +40,7 @@ public class RobotContainer extends Robot {
             case TELEOP:
 
                 slideBasic = new SlideBasic(hardwareMap);
+                register(slideBasic);
                 this.driverone = new GamepadEx(driverone);
                 this.drivertwo = new GamepadEx(drivertwo);
                 initTeleop();
