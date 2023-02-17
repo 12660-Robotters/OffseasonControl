@@ -53,6 +53,7 @@ public class RobotContainer extends Robot {
 
     private void initTeleop() {
         bindGrabbers();
+        bindSlideBasic();
 
 
 
