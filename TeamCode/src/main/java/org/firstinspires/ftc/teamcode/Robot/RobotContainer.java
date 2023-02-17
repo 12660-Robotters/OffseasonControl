@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Robot;
 
 
+import com.arcrobotics.ftclib.command.CommandScheduler;
 import com.arcrobotics.ftclib.command.RunCommand;
 import com.arcrobotics.ftclib.command.button.Button;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
@@ -12,6 +13,7 @@ import org.firstinspires.ftc.teamcode.Robot.Subsystems.Claw_Subsystem;
 import org.firstinspires.ftc.teamcode.util.Robot;
 
 public class RobotContainer extends Robot {
+    CommandScheduler commandScheduler;
 
     GamepadEx driverone;
     GamepadEx drivertwo;
@@ -23,6 +25,7 @@ public class RobotContainer extends Robot {
 
     public RobotContainer(HardwareMap hardwareMap, OpModeType type, Gamepad driverone, Gamepad drivertwo) {
         claw_subsystem = new Claw_Subsystem(hardwareMap);
+        commandScheduler = CommandScheduler.getInstance();
 
 
         switch (type) {
