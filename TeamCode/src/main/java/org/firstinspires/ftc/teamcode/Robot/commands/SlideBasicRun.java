@@ -7,7 +7,7 @@ import org.firstinspires.ftc.teamcode.Robot.Subsystems.SlideBasic;
 
 public class SlideBasicRun extends CommandBase {
     private final SlideBasic slideBasic;
-    private GamepadEx drivertwo;
+    private final GamepadEx drivertwo;
 
     public SlideBasicRun(SlideBasic slideBasic, GamepadEx drivertwo) {
         this.slideBasic = slideBasic;
