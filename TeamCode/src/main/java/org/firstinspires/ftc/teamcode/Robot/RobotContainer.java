@@ -36,6 +36,7 @@ public class RobotContainer extends Robot {
         commandScheduler = CommandScheduler.getInstance();
 
         bulkReading = new BulkReading(hardwareMap);
+        register(bulkReading);
 
         switch (type) {
             case AUTO:
