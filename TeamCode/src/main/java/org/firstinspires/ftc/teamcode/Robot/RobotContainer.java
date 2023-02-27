@@ -55,13 +55,14 @@ public class RobotContainer extends Robot {
     }
 
     private void initAuto() {
+        bindClearCache();
 
     }
 
     private void initTeleop() {
         bindGrabbers();
         bindSlideBasic();
-
+        bindClearCache();
 
 
 
@@ -78,7 +79,7 @@ public class RobotContainer extends Robot {
         commandScheduler.setDefaultCommand(slideBasic, new SlideBasicRun(slideBasic, drivertwo));
     }
 
-    private void clearCache() {
+    private void bindClearCache() {
         commandScheduler.setDefaultCommand(bulkReading, new BulkReadingClear(bulkReading));
     }
 }
