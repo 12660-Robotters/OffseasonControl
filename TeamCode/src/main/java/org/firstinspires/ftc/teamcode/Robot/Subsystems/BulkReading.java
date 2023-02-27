@@ -21,4 +21,8 @@ public class BulkReading extends SubsystemBase {
             module.clearBulkCache();
         }
     }
+
+    public List<LynxModule> getAllHubs() {
+        return allHubs;
+    }
 }
