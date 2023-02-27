@@ -9,6 +9,7 @@ import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.teamcode.Robot.Subsystems.BulkReading;
 import org.firstinspires.ftc.teamcode.Robot.Subsystems.Claw_Subsystem;
 import org.firstinspires.ftc.teamcode.Robot.Subsystems.SlideBasic;
 import org.firstinspires.ftc.teamcode.Robot.commands.SlideBasicRun;
@@ -16,6 +17,8 @@ import org.firstinspires.ftc.teamcode.util.Robot;
 
 public class RobotContainer extends Robot {
     CommandScheduler commandScheduler;
+
+    BulkReading bulkReading;
 
     GamepadEx driverone;
     GamepadEx drivertwo;
@@ -31,7 +34,7 @@ public class RobotContainer extends Robot {
         register(claw_subsystem);
         commandScheduler = CommandScheduler.getInstance();
 
-
+        bulkReading = new BulkReading(hardwareMap);
 
         switch (type) {
             case AUTO:
