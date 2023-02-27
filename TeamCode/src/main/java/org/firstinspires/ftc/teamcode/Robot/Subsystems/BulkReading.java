@@ -15,4 +15,10 @@ public class BulkReading extends SubsystemBase {
             module.setBulkCachingMode(LynxModule.BulkCachingMode.MANUAL);
         }
     }
+
+    public void clearChache() {
+        for (LynxModule module:allHubs) {
+            module.clearBulkCache();
+        }
+    }
 }
