@@ -86,4 +86,10 @@ public class RobotContainer extends Robot {
             module.setBulkCachingMode(LynxModule.BulkCachingMode.MANUAL);
         }
     }
+
+    private void clearBulkCache() {
+        for(LynxModule module : lynxModuleList) {
+            module.clearBulkCache();
+        }
+    }
 }
