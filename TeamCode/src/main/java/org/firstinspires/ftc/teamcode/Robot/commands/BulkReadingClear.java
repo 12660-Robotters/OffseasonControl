@@ -18,4 +18,9 @@ public class BulkReadingClear extends CommandBase {
             module.clearBulkCache();
         }
     }
+
+    @Override
+    public boolean isFinished() {
+        return false;
+    }
 }
