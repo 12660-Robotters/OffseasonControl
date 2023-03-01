@@ -37,6 +37,7 @@ public class RobotContainer extends Robot {
         commandScheduler = CommandScheduler.getInstance();
 
         lynxModuleList = hardwareMap.getAll(LynxModule.class);
+        bindHubBulkReads();
 
 
 
@@ -70,7 +71,11 @@ public class RobotContainer extends Robot {
 
     }
 
-
+    @Override
+    public void run() {
+        clearBulkCache();
+        super.run();
+    }
     private void bindGrabbers() {
         Button LEFT_BUMPER = drivertwo.getGamepadButton(GamepadKeys.Button.LEFT_BUMPER);
         LEFT_BUMPER.whenPressed(new RunCommand(claw_subsystem::grab, claw_subsystem));
